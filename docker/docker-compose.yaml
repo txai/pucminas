@@ -32,7 +32,7 @@ services:
     ports:
       - "8080:8080"
       - "8787:8787"
-    command: start-dev
+    command: start-dev --db-url jdbc:postgresql://postgres:5432/keycloak --db postgres --db-username keycloak --db-password password
 
 volumes:
   postgres-data: {}
