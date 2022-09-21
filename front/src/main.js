@@ -1,9 +1,10 @@
-import { createApp } from 'vue'
+import Vue from 'vue'
 import App from './App.vue'
-import auth from '@/plugins/auth'
+import vuetify from './plugins/vuetify'
 
-const receba = createApp(App)
+Vue.config.productionTip = false
 
-receba.use(auth)
-
-receba.mount("#app")
+new Vue({
+  vuetify,
+  render: h => h(App)
+}).$mount('#app')
