@@ -1,6 +1,13 @@
 <template>
-    <l-map @ready="onReady" @locationfound="onLocationFound" ref="map" style="height: 100%" :zoom="zoom"
-        :center="center">
+    <l-map 
+        @ready="onReady" 
+        @locationfound="onLocationFound" 
+        ref="map" 
+        style="height: 100%"
+        :zoom="zoom"
+        :center="center"
+        elevation="-1"
+    >
         <template v-if="location">
             <l-circle-marker :lat-lng="location.latlng" :fillOpacity="1" :radius="0.1" />
             <l-circle-marker :lat-lng="location.latlng" :radius="location.accuracy/2" :stroke="false" />
