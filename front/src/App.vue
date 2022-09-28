@@ -15,34 +15,31 @@
       v-model="drawer"
       app
       clipped
+      style="z-index:1001"
     >
       <v-list 
         nav
       >
-        <v-list-item link >
-          <v-list-item-title>Home</v-list-item-title>
+        <v-list-item :to="{path: '/'}" link>
+          <v-list-item-title>Início</v-list-item-title>
         </v-list-item>
         <v-list-item link >
-          <v-list-item-title>Meu perfil</v-list-item-title>
+          <v-list-item-title>Perfil</v-list-item-title>
         </v-list-item>
-        <v-list-item link >
-          <v-list-item-title>Minhas iniciativas de doação</v-list-item-title>
+        <v-list-item :to="{path: '/idcs'}" link >
+          <v-list-item-title>Iniciativas de doação</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
     <v-main>
-      <HomeView></HomeView>
+      <router-view />
     </v-main>
   </v-app>
 </template>
 
 <script>
-  import HomeView from './views/HomeView.vue'
   export default {
-    components: {
-    HomeView
-  },
     data: () => ({ drawer: null }),
   }
 </script>

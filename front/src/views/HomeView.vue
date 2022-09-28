@@ -1,9 +1,9 @@
 <template>
-    <MainMap></MainMap>
+    <MapaIDC></MapaIDC>
 </template>
 
 <script>
-    import MainMap from '../components/MainMap.vue'
+    import MapaIDC from '../components/MapaIDC.vue'
     export default {
         name: 'HomeView',
         data() {
@@ -12,7 +12,7 @@
             }
         },
         components: {
-            MainMap
+            MapaIDC
         }
     }
 </script>

@@ -6,7 +6,6 @@
         style="height: 100%"
         :zoom="zoom"
         :center="center"
-        elevation="-1"
     >
         <template v-if="location">
             <l-circle-marker :lat-lng="location.latlng" :fillOpacity="1" :radius="0.1" />
@@ -20,7 +19,7 @@
 import { LMap, LTileLayer, LCircleMarker } from 'vue2-leaflet';
 
 export default {
-    name: 'MainMap',
+    name: 'MapaIDC',
     components: {
         LMap,
         LTileLayer,

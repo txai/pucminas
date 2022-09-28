@@ -4,7 +4,6 @@ import Vuetify from 'vuetify/lib/framework';
 Vue.use(Vuetify);
 
 const greenTheme = {
-    
     primary: '#cddc39',
     secondary: '#ffc107',
     accent: '#ff9800',
