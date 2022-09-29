@@ -12,8 +12,8 @@ Vue.config.productionTip = false
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', component: HomeView },
-  { path: '/idcs', component: MinhasIDCs }
+  { path: '/', component: HomeView},
+  { path: '/iniciativas', component: MinhasIDCs, meta: { title: "Minhas iniciativas" } }
 ]
 
 const router = new VueRouter({

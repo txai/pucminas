@@ -3,19 +3,20 @@
 
     <v-app-bar
       app
-      color="primary"
-      clipped-left
+      color="secondary"
     >
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-
-      <v-toolbar-title>ReCeBa</v-toolbar-title>
+      <v-app-bar-nav-icon v-if="$vuetify.breakpoint.xsOnly" @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-spacer />
+    <v-toolbar-title style="text-align: center;">{{ $route.meta.title || "ReCeBa" }}</v-toolbar-title>
+      <v-spacer />
     </v-app-bar>
 
     <v-navigation-drawer
       v-model="drawer"
       app
-      clipped
       style="z-index:1001"
+      color="primary"
+      :permanent="!$vuetify.breakpoint.xsOnly"
     >
       <v-list 
         nav
@@ -26,8 +27,8 @@
         <v-list-item link >
           <v-list-item-title>Perfil</v-list-item-title>
         </v-list-item>
-        <v-list-item :to="{path: '/idcs'}" link >
-          <v-list-item-title>Iniciativas de doação</v-list-item-title>
+        <v-list-item :to="{path: '/iniciativas'}" link >
+          <v-list-item-title>Minhas iniciativas</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
