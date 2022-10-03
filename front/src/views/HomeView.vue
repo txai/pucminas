@@ -1,9 +1,9 @@
 <template>
-    <MapaIDC></MapaIDC>
+    <MapaIniciativas></MapaIniciativas>
 </template>
 
 <script>
-    import MapaIDC from '../components/MapaIDC.vue'
+    import MapaIniciativas from '../components/MapaIniciativas.vue'
     export default {
         name: 'HomeView',
         data() {
@@ -12,7 +12,7 @@
             }
         },
         components: {
-            MapaIDC
+            MapaIniciativas
         }
     }
 </script>

@@ -19,7 +19,7 @@
 import { LMap, LTileLayer, LCircleMarker } from 'vue2-leaflet';
 
 export default {
-    name: 'MapaIDC',
+    name: 'MapaIniciativas',
     components: {
         LMap,
         LTileLayer,

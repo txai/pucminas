@@ -5,7 +5,7 @@ import 'leaflet/dist/leaflet.css'
 import VueRouter from 'vue-router'
 
 import HomeView from './views/HomeView.vue'
-import MinhasIDCs from './views/MinhasIDCs.vue'
+import MinhasIniciativas from './views/MinhasIniciativas.vue'
 
 Vue.config.productionTip = false
 
@@ -13,7 +13,7 @@ Vue.use(VueRouter)
 
 const routes = [
   { path: '/', component: HomeView},
-  { path: '/iniciativas', component: MinhasIDCs, meta: { title: "Minhas iniciativas" } }
+  { path: '/iniciativas', component: MinhasIniciativas, meta: { title: "Minhas iniciativas" } }
 ]
 
 const router = new VueRouter({

@@ -4,7 +4,9 @@
             <v-app-bar flat dense color="white">
                 <v-app-bar-title>{{ idc.nome }}</v-app-bar-title>
                 <v-spacer />
-                <v-dialog width=500 v-model="dialog">
+                <v-btn icon @click="editDialog=true"><v-icon>mdi-pencil</v-icon></v-btn>
+                <AddEditIniciativa v-model="editDialog" @save="onEdition" :ext-idc="idc"></AddEditIniciativa>
+                <v-dialog width="500" v-model="deleteDialog">
                     <template v-slot:activator="{on, attrs}">
                         <v-btn icon v-bind="attrs" v-on="on">
                             <v-icon>mdi-delete</v-icon>
@@ -18,7 +20,7 @@
                         <v-card-actions>
                             <v-spacer />
                             <v-btn text @click="onDelete">Sim</v-btn>
-                            <v-btn text @click="dialog = false">Não</v-btn>
+                            <v-btn text @click="deleteDialog = false">Não</v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-dialog>
@@ -30,20 +32,31 @@
 </template>
 
 <script>
+import AddEditIniciativa from './AddEditIniciativa.vue';
     export default {
-        name: "ItemIDC",
-        data() {
-            return {
-                dialog: false
-            }
+    name: "CardIniciativa",
+    data() {
+        return {
+            deleteDialog: false,
+            editDialog: false,
+            localIdc: {}
+        };
+    },
+    mounted() {
+        this.localIdc = this.idc
+    },
+    props: {
+        idc: Object
+    },
+    methods: {
+        onDelete() {
+            this.$emit("deleted", this.localIdc);
         },
-        props: {
-            idc: Object
-        },
-        methods: {
-            onDelete() {
-                this.$emit('deleted', this.idc)
-            }
+        onEdition(idc) {
+            this.localIdc = idc
+            this.$emit('edited', this.localIdc);
         }
-    }
+    },
+    components: { AddEditIniciativa }
+}
 </script>

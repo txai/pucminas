@@ -19,45 +19,21 @@
             <template v-slot:default="props">
                 <v-list>
                     <v-list-item v-for="item in props.items" :key="item.nome">
-                        <ItemIDC :idc="item" @deleted="onDeleteItem"></ItemIDC>
+                        <CardIniciativa :idc="item" @deleted="onDeleteItem" @edited="onEditItem"></CardIniciativa>
                     </v-list-item>
                 </v-list>
             </template>
         </v-data-iterator>
-        <v-dialog
-            fullscreen
-            hide-overlay
-            v-model="addDialog"
-        >
-            <template v-slot:activator="{on, attrs}">
-                <v-btn 
-                    x-large
-                    fab
-                    bottom
-                    right
-                    fixed
-                    color="secondary"
-                    v-bind="attrs"
-                    v-on="on"
-                >
-                    <v-icon>mdi-plus</v-icon>
-                </v-btn>
-            </template>
-            <v-card>
-                <v-toolbar color="secondary">
-                    <v-spacer />
-                    <v-toolbar-title>Adicionar iniciativa</v-toolbar-title>
-                    <v-spacer />
-                    <v-btn icon @click="addDialog = false"><v-icon>mdi-close</v-icon></v-btn>
-                    <v-btn icon @click="addDialog = false"><v-icon>mdi-check</v-icon></v-btn>
-                </v-toolbar>
-            </v-card>
-        </v-dialog>
+        <AddButton @clicked="addDialog=true" />
+        <AddEditIniciativa v-model="addDialog" @save="onAddItem" :ext-idc="newIdc"></AddEditIniciativa>
     </v-container>
 </template>
 
 <script>
-    import ItemIDC from '@/components/ItemIDC.vue';
+    import CardIniciativa from '@/components/CardIniciativa.vue';
+    import AddButton from '@/components/AddButton.vue';
+    import AddEditIniciativa from '@/components/AddEditIniciativa.vue';
+
     const myIdcs = [
         {id: 1, nome: 'Igreja São João', dataDistribuicao: "27/05/2022", cestasRestantes: 3, composicaoCesta: ['Arroz', 'Feijão']},
         {id: 2, nome: 'Projeto lá de casa', dataDistribuicao: "27/05/2022", cestasRestantes: 1, composicaoCesta: ['Arroz', 'Feijão']}
@@ -68,15 +44,25 @@
                 idcs: myIdcs,
                 search: '',
                 filter: {},
-                addDialog: false
+                addDialog: false,
+                newIdc: {}
             }
         },
         components: {
-            ItemIDC
+            CardIniciativa,
+            AddButton,
+            AddEditIniciativa
         },
         methods: {
             onDeleteItem(idc) {
                 this.idcs = this.idcs.filter(item => item.nome !== idc.nome);
+            },
+            onAddItem(idc) {
+                this.idcs.push(idc)
+                this.addDialog = false
+            },
+            onEditItem(idc) {
+                this.idcs[idc.nome] = idc
             }
         }
     }

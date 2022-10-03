@@ -7,7 +7,7 @@
     >
       <v-app-bar-nav-icon v-if="$vuetify.breakpoint.xsOnly" @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-spacer />
-    <v-toolbar-title style="text-align: center;">{{ $route.meta.title || "ReCeBa" }}</v-toolbar-title>
+      <v-toolbar-title style="text-align: center;">{{ $route.meta.title || "ReCeBa" }}</v-toolbar-title>
       <v-spacer />
     </v-app-bar>
 
