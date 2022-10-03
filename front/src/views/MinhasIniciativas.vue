@@ -25,7 +25,7 @@
             </template>
         </v-data-iterator>
         <AddButton @clicked="addDialog=true" />
-        <AddEditIniciativa v-model="addDialog" @save="onAddItem" :ext-idc="newIdc"></AddEditIniciativa>
+        <AddEditIniciativa v-model="addDialog" @save="onAddItem"></AddEditIniciativa>
     </v-container>
 </template>
 
@@ -33,6 +33,8 @@
     import CardIniciativa from '@/components/CardIniciativa.vue';
     import AddButton from '@/components/AddButton.vue';
     import AddEditIniciativa from '@/components/AddEditIniciativa.vue';
+
+    let idcId = 3;
 
     const myIdcs = [
         {id: 1, nome: 'Igreja São João', dataDistribuicao: "27/05/2022", cestasRestantes: 3, composicaoCesta: ['Arroz', 'Feijão']},
@@ -45,7 +47,6 @@
                 search: '',
                 filter: {},
                 addDialog: false,
-                newIdc: {}
             }
         },
         components: {
@@ -58,11 +59,20 @@
                 this.idcs = this.idcs.filter(item => item.nome !== idc.nome);
             },
             onAddItem(idc) {
+                idc.id = idcId
+                idcId++
                 this.idcs.push(idc)
                 this.addDialog = false
             },
             onEditItem(idc) {
-                this.idcs[idc.nome] = idc
+                console.log(idc.id)
+                const idcIndex = this.idcs.findIndex(o => {
+                    return o.id === idc.id
+                })
+                console.log(idcIndex)                
+                if(idcIndex !== -1) {
+                    this.idcs.splice(idcIndex, 1, idc)
+                }   
             }
         }
     }

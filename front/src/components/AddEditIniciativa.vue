@@ -20,7 +20,7 @@
             extIdc: Object
         },
         mounted() {
-            this.idc = this.extIdc === undefined ? {} : this.extIdc
+            this.idc = this.extIdc === undefined ? {} : structuredClone(this.extIdc)
         },
         computed: {
             show: {
@@ -29,6 +29,13 @@
                 },
                 set(value) {
                     this.$emit('input', value)
+                }
+            }
+        },
+        watch: {
+            show(newState) {
+                if(newState === false) {
+                    this.idc = this.extIdc === undefined ? {} : structuredClone(this.extIdc)
                 }
             }
         },

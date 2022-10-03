@@ -50,11 +50,12 @@ import AddEditIniciativa from './AddEditIniciativa.vue';
     },
     methods: {
         onDelete() {
-            this.$emit("deleted", this.localIdc);
+            this.$emit('deleted', this.localIdc);
         },
         onEdition(idc) {
             this.localIdc = idc
             this.$emit('edited', this.localIdc);
+            this.editDialog = false
         }
     },
     components: { AddEditIniciativa }
