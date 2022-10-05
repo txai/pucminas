@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Value;
 
 @Value
-@Document
+@Document("iniciativas")
 public class Iniciativa {
 
     @Id ObjectId id;

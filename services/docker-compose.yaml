@@ -14,16 +14,16 @@ services:
       - "27017:27017"
     command: mongod
 
-#  iniciativas:
-#    container_name: servico-iniciativas
-#    build:
-#      context: iniciativas
-#      dockerfile: Dockerfile
-#    image: servico-iniciativas
-#    ports:
-#      - "8090:8090"
-#    depends_on:
-#      - mongo
+  iniciativas:
+    container_name: servico-iniciativas
+    build:
+      context: iniciativas
+      dockerfile: Dockerfile
+    image: servico-iniciativas
+    ports:
+      - "8090:8090"
+    depends_on:
+      - mongo
 
 volumes:
   mongo-data:
