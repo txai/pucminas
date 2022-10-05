@@ -2,7 +2,6 @@ package com.receba.servicoiniciativas.models;
 
 import java.util.Date;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,7 +11,7 @@ import lombok.Value;
 @Document("iniciativas")
 public class Iniciativa {
 
-    @Id ObjectId id;
+    @Id String id;
 
     String nome;
 

@@ -33,21 +33,23 @@
     import CardIniciativa from '@/components/CardIniciativa.vue';
     import AddButton from '@/components/AddButton.vue';
     import AddEditIniciativa from '@/components/AddEditIniciativa.vue';
+    import axios from 'axios';
 
     let idcId = 3;
 
-    const myIdcs = [
-        {id: 1, nome: 'Igreja São João', dataDistribuicao: "27/05/2022", cestasRestantes: 3, composicaoCesta: ['Arroz', 'Feijão']},
-        {id: 2, nome: 'Projeto lá de casa', dataDistribuicao: "27/05/2022", cestasRestantes: 1, composicaoCesta: ['Arroz', 'Feijão']}
-    ]
     export default {
         data() {
             return {
-                idcs: myIdcs,
+                idcs: [],
                 search: '',
                 filter: {},
                 addDialog: false,
             }
+        },
+        created() {
+            axios.get("http://localhost:8090/iniciativas")
+                 .then(response => this.idcs = response.data)
+                 .catch(error => console.log(error))
         },
         components: {
             CardIniciativa,
@@ -65,11 +67,9 @@
                 this.addDialog = false
             },
             onEditItem(idc) {
-                console.log(idc.id)
                 const idcIndex = this.idcs.findIndex(o => {
                     return o.id === idc.id
                 })
-                console.log(idcIndex)                
                 if(idcIndex !== -1) {
                     this.idcs.splice(idcIndex, 1, idc)
                 }   
