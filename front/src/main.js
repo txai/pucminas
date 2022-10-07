@@ -2,23 +2,21 @@ import Vue from 'vue'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import 'leaflet/dist/leaflet.css'
-import VueRouter from 'vue-router'
+import KeycloakPlugin from './plugins/keycloak-plugin'
 
-import HomeView from './views/HomeView.vue'
-import MinhasIniciativas from './views/MinhasIniciativas.vue'
+import router from './router'
+
+Vue.use(KeycloakPlugin)
 
 Vue.config.productionTip = false
 
-Vue.use(VueRouter)
-
-const routes = [
-  { path: '/', component: HomeView},
-  { path: '/iniciativas', component: MinhasIniciativas, meta: { title: "Minhas iniciativas" } }
-]
-
-const router = new VueRouter({
-  routes
-})
+Vue.$keycloak.init({
+    onLoad: 'check-sso',
+    silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html',
+    checkLoginIframe: false
+  })
+  .then()
+  .catch(() => console.log("Erro no init"))
 
 new Vue({
   vuetify,
