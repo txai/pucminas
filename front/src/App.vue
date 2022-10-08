@@ -9,9 +9,11 @@
       <v-spacer />
       <v-toolbar-title style="text-align: center;">{{ $route.meta.title || "ReCeBa" }}</v-toolbar-title>
       <v-spacer />
+      <v-btn v-if="!$keycloak.authenticated" @click="$keycloak.login">Entrar</v-btn>
+      <v-btn v-else @click="$keycloak.logoutFn">Sair</v-btn>
     </v-app-bar>
 
-    <v-navigation-drawer
+    <v-navigation-drawer v-if="$keycloak.authenticated"
       v-model="drawer"
       app
       style="z-index:1001"
@@ -40,6 +42,7 @@
 </template>
 
 <script>
+
   export default {
     data: () => ({ drawer: null }),
   }

@@ -29,13 +29,13 @@ function sleep(ms) {
 router.beforeEach(async (to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     
-    while (Vue.$keycloak.createLoginUrl === null) {
+    while (router.app.$keycloak.createLoginUrl === null) {
       await sleep(100)
     }
-    if (Vue.$keycloak.authenticated) {
+    if (router.app.$keycloak.authenticated) {
       next()
     } else {
-      const loginUrl = Vue.$keycloak.createLoginUrl()
+      const loginUrl = router.app.$keycloak.createLoginUrl()
       window.location.replace(loginUrl)
     }
   } else {
