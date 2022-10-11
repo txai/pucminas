@@ -13,7 +13,13 @@
                 <v-btn icon @click="show = false"><v-icon>mdi-close</v-icon></v-btn>
                 <v-btn icon @click="onSave"><v-icon>mdi-check</v-icon></v-btn>
             </v-toolbar>
-            <v-card-text><v-container><slot></slot></v-container></v-card-text>
+            <v-card-text>
+                <v-form>
+                    <v-container fluid grid-list-md>
+                        <slot></slot>
+                    </v-container>
+                </v-form>
+            </v-card-text>
         </v-card>
     </v-dialog>
 </template>
