@@ -26,8 +26,8 @@
         <v-list-item :to="{path: '/'}" link>
           <v-list-item-title>Início</v-list-item-title>
         </v-list-item>
-        <v-list-item link >
-          <v-list-item-title>Perfil</v-list-item-title>
+        <v-list-item :to="{path: '/perfil'}" link >
+          <v-list-item-title>Meus dados</v-list-item-title>
         </v-list-item>
         <v-list-item :to="{path: '/iniciativas'}" link >
           <v-list-item-title>Minhas iniciativas</v-list-item-title>

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HomeView from './views/HomeView.vue'
 import MinhasIniciativas from './views/MinhasIniciativas.vue'
+import MeusDados from './views/MeusDados.vue'
 
 Vue.use(Router)
 
@@ -18,6 +19,11 @@ const router = new Router({
       path: '/iniciativas',
       name: 'iniciativas',
       component: MinhasIniciativas, meta: { title: "Minhas iniciativas", requiresAuth: true }
+    },
+    {
+      path: '/perfil',
+      name: 'perfil',
+      component: MeusDados, meta: { title: "Meus dados", requiresAuth: true }
     }
   ]
 })
