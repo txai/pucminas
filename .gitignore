@@ -24,3 +24,6 @@ hs_err_pid*
 
 #environment files
 *.env
+
+#keys
+*.pem
