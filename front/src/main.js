@@ -12,12 +12,12 @@ Vue.use(VueKeyCloak, {
     silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html'
   },
   config: {
-    url: 'http://localhost:8888',
+    url: 'http://18.231.1.252:8080',
     clientId: 'receba-client',
     realm: 'receba'
   },
   logout: {
-    post_logout_redirect_uri : 'http://localhost:8080'
+    post_logout_redirect_uri : 'http://receba.s3-website-sa-east-1.amazonaws.com'
   },
   onReady () {
     new Vue({

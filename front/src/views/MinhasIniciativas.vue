@@ -47,7 +47,7 @@
             }
         },
         created() {
-            axios.get("http://localhost:8090/iniciativas")
+            axios.get("http://ec2-18-231-1-252.sa-east-1.compute.amazonaws.com:8090/iniciativas")
                  .then(response => this.idcs = response.data)
                  .catch(error => console.log(error))
         },

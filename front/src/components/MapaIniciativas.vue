@@ -1,7 +1,5 @@
 <template>
     <l-map 
-        @ready="onReady" 
-        @locationfound="onLocationFound" 
         ref="map" 
         style="height: 100%"
         :zoom="zoom"
@@ -31,17 +29,18 @@ export default {
             attribution:
                 '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
             zoom: 30,
-            center: [0, 0],
+            center: [-23.57, -46.73],
             location: null
         };
     },
     methods: {
         onReady() {
-            this.$refs['map'].mapObject.locate()
+            //this.$refs['map'].mapObject.locate()
         },
         onLocationFound(l) {
-            this.center = l.latlng
-            this.location = l;
+            console.log(l)
+            //this.center = l.latlng
+            //this.location = l;
         }
     }
 }
