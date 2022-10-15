@@ -20,6 +20,7 @@ services:
       context: iniciativas
       dockerfile: Dockerfile
     image: servico-iniciativas
+    restart: always
     ports:
       - "8090:8090"
     depends_on:

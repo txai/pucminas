@@ -1,4 +1,4 @@
-package com.receba.servicoiniciativas;
+package com.receba.iniciativaservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
