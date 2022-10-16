@@ -7,12 +7,13 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Value;
+import lombok.experimental.NonFinal;
 
 @Value
 @Document("iniciativas")
 public class Iniciativa {
 
-    @Id String id;
+    @NonFinal @Id String id;
 
     String nome;
 

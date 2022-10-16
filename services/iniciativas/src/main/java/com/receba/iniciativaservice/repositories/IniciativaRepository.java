@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 import com.receba.iniciativaservice.models.Iniciativa;
 
 @Repository
-public interface IniciativaRepository extends ReactiveMongoRepository<Iniciativa, ObjectId> {
+public interface IniciativaRepository extends ReactiveMongoRepository<Iniciativa, ObjectId>, ExtendedIniciativaRepository {
 }
