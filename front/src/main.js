@@ -17,7 +17,8 @@ Vue.use(VueKeyCloak, {
     realm: 'receba'
   },
   logout: {
-    post_logout_redirect_uri : 'http://receba.s3-website-sa-east-1.amazonaws.com'
+    redirectUri : 'http://receba.s3-website-sa-east-1.amazonaws.com'
+   //redirectUri: 'http://172.25.231.224:8080'
   },
   onReady () {
     new Vue({

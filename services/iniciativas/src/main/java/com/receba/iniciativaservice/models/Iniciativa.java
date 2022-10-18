@@ -29,5 +29,5 @@ public class Iniciativa {
 
     ComposicaoCestaBasica composicaoCesta;
 
-    int userId;
+    String userId;
 }

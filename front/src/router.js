@@ -7,7 +7,7 @@ import MeusDados from './views/MeusDados.vue'
 Vue.use(Router)
 
 const router = new Router({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes: [
     {
@@ -16,7 +16,7 @@ const router = new Router({
       component: HomeView
     },
     {
-      path: '/iniciativas',
+      path: '/iniciativas/:userId',
       name: 'iniciativas',
       component: MinhasIniciativas, meta: { title: "Minhas iniciativas", requiresAuth: true }
     },
