@@ -16,7 +16,7 @@ const router = new Router({
       component: HomeView
     },
     {
-      path: '/iniciativas/:userId',
+      path: '/iniciativas',
       name: 'iniciativas',
       component: MinhasIniciativas, meta: { title: "Minhas iniciativas", requiresAuth: true }
     },

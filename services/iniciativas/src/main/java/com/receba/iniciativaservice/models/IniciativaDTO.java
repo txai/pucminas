@@ -1,14 +1,17 @@
 package com.receba.iniciativaservice.models;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
+import java.util.Stack;
 
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Value
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class IniciativaDTO {
     String id;
 
@@ -29,8 +32,7 @@ public class IniciativaDTO {
     public IniciativaDTO(final Iniciativa iniciativa) {
         this.id = iniciativa.getId();
         this.nome = iniciativa.getNome();
-        final DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        this.dataDistribuicao = formatter.format(iniciativa.getDataDistribuicao());
+        this.dataDistribuicao = iniciativa.getDataDistribuicao().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         this.endereco = iniciativa.getEndereco();
         this.telefone = iniciativa.getTelefone();
         this.email = iniciativa.getEmail();
@@ -42,17 +44,13 @@ public class IniciativaDTO {
     public Iniciativa toIniciativa() {
         final String id = this.id;
         final String nome = this.nome;
-        Date dataDistribuicao = new Date();
-        try {
-            dataDistribuicao = new SimpleDateFormat("dd/MM/yyyy").parse(this.dataDistribuicao);
-        } catch (ParseException ex) {
-        }
+        LocalDate dataDistribuicao = LocalDate.parse(this.dataDistribuicao, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         final String endereco = this.endereco;
         final String telefone = this.telefone;
         final String email = this.email;
         ComposicaoCestaBasica composicaoCesta = new ComposicaoCestaBasica(this.composicaoCesta);
         String userId = this.userId;
 
-        return new Iniciativa(id, nome, dataDistribuicao, endereco, telefone, email, composicaoCesta, userId);
+        return new Iniciativa(id, nome, dataDistribuicao, endereco, telefone, email, new Stack<>(), composicaoCesta, userId);
     }
 }

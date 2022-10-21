@@ -1,13 +1,17 @@
 package com.receba.iniciativaservice.services;
 
-import org.springframework.stereotype.Service;
-
 import com.receba.iniciativaservice.models.Iniciativa;
 
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
-@Service
 public interface IniciativaService {
 
-    public Flux<Iniciativa> findAll();
+    public Flux<Iniciativa> listAll();
+
+    public Mono<Iniciativa> create(Iniciativa iniciativa);
+
+    public Mono<Iniciativa> update(Iniciativa iniciativa);
+
+    public Mono<Void> delete(String id);
 }

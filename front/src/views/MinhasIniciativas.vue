@@ -36,6 +36,8 @@
     import axios from 'axios';
 
     let idcId = 3;
+    //const iniciativaServiceUri = 'http://ec2-18-231-1-252.sa-east-1.compute.amazonaws.com:8090'
+    const iniciativaServiceUri = 'http://localhost:8090'
 
     export default {
         data() {
@@ -47,8 +49,12 @@
             }
         },
         created() {
-            axios.get("http://ec2-18-231-1-252.sa-east-1.compute.amazonaws.com:8090/iniciativas")
-                 .then(response => this.idcs = response.data)
+            console.log("created")
+            axios.get(`${iniciativaServiceUri}/iniciativas`)
+                 .then(response => {
+                    console.log(response.data)
+                    this.idcs = response.data
+                 })
                  .catch(error => console.log(error))
         },
         components: {
