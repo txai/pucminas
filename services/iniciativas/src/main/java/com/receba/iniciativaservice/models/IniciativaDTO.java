@@ -2,6 +2,7 @@ package com.receba.iniciativaservice.models;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
@@ -25,7 +26,7 @@ public class IniciativaDTO {
 
     String email;
 
-    Map<String, Integer> composicaoCesta;
+    Map<String, Integer> composicaoCesta = new HashMap<>();
 
     String userId;
 

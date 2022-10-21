@@ -35,7 +35,6 @@
     import AddEditIniciativa from '@/components/AddEditIniciativa.vue';
     import axios from 'axios';
 
-    let idcId = 3;
     //const iniciativaServiceUri = 'http://ec2-18-231-1-252.sa-east-1.compute.amazonaws.com:8090'
     const iniciativaServiceUri = 'http://localhost:8090'
 
@@ -49,13 +48,11 @@
             }
         },
         created() {
-            console.log("created")
             axios.get(`${iniciativaServiceUri}/iniciativas`)
                  .then(response => {
-                    console.log(response.data)
                     this.idcs = response.data
                  })
-                 .catch(error => console.log(error))
+                 .catch(error => console.error(error))
         },
         components: {
             CardIniciativa,
@@ -64,21 +61,35 @@
         },
         methods: {
             onDeleteItem(idc) {
-                this.idcs = this.idcs.filter(item => item.nome !== idc.nome);
+                axios.delete(`${iniciativaServiceUri}/iniciativas/${idc.id}`)
+                     .then(() => {
+                        console.info(`${idc.nome} Excluido com sucesso`)
+                        this.idcs = this.idcs.filter(item => item.nome !== idc.nome);
+                     })
+                     .catch(error => console.error(error))
             },
             onAddItem(idc) {
-                idc.id = idcId
-                idcId++
-                this.idcs.push(idc)
-                this.addDialog = false
+                axios.post(`${iniciativaServiceUri}/iniciativas`, idc)
+                     .then(response => {
+                        console.info(`${idc.nome} adicionado com sucesso`)
+                        idc.id = response.data.id
+                        this.idcs.push(idc)
+                        this.addDialog = false
+                     })
+                     .catch(error => console.error(error))                
             },
             onEditItem(idc) {
-                const idcIndex = this.idcs.findIndex(o => {
-                    return o.id === idc.id
-                })
-                if(idcIndex !== -1) {
-                    this.idcs.splice(idcIndex, 1, idc)
-                }   
+                axios.put(`${iniciativaServiceUri}/iniciativas/${idc.id}`, idc)
+                     .then(response => {
+                        idc = response.data
+                        const idcIndex = this.idcs.findIndex(o => {
+                            return o.id === idc.id
+                        })
+                        if(idcIndex !== -1) {
+                            this.idcs.splice(idcIndex, 1, idc)
+                        }   
+                     })
+                     .catch(error => console.error(error)) 
             }
         }
     }
