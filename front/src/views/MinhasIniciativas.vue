@@ -35,8 +35,8 @@
     import AddEditIniciativa from '@/components/AddEditIniciativa.vue';
     import axios from 'axios';
 
-    //const iniciativaServiceUri = 'http://ec2-18-231-1-252.sa-east-1.compute.amazonaws.com:8090'
-    const iniciativaServiceUri = 'http://localhost:8090'
+    const iniciativaServiceUri = 'http://ec2-18-231-1-252.sa-east-1.compute.amazonaws.com:8090'
+    //const iniciativaServiceUri = 'http://localhost:8090'
 
     export default {
         data() {

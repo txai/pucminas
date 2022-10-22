@@ -2,8 +2,8 @@
     <AddEditDialog :title="title" v-model="show" @save="onSave">
         <v-row>
             <v-col cols="6" md="6">
-                <v-text-field v-model="idc.nome" label="Nome" />
-                <v-text-field v-model="idc.dataDistribuicao" label="Data de distribuição" />
+                <v-text-field v-model="idc.nome" label="Nome*" required />
+                <v-text-field v-model="idc.dataDistribuicao" label="Data de distribuição*" required />
                 <v-text-field v-model="idc.endereco" label="Endereço" append-icon="mdi-map-marker"/> <!-- Mudar para v-autocomplete -->
                 <v-text-field v-model="idc.telefone" label="Telefone" append-icon="mdi-phone" />
                 <v-text-field v-model="idc.email" label="E-mail" append-icon="mdi-email" />
@@ -41,7 +41,7 @@
             extIdc: Object
         },
         mounted() {
-            this.idc = this.extIdc === undefined ? {itensCesta: ['Arroz', 'Feijão', 'Farinha', 'Óleo']} : structuredClone(this.extIdc)
+            this.idc = this.extIdc === undefined ? {itensCesta: []} : structuredClone(this.extIdc)
         },
         computed: {
             show: {
@@ -56,7 +56,7 @@
         watch: {
             show(newState) {
                 if(newState === false) {
-                    this.idc = this.extIdc === undefined ? {itensCesta: ['Arroz', 'Feijão', 'Farinha', 'Óleo']} : structuredClone(this.extIdc)
+                    this.idc = this.extIdc === undefined ? {itensCesta: []} : structuredClone(this.extIdc)
                 }
             }
         },
