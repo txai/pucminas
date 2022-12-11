@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import 'leaflet/dist/leaflet.css'
+import 'leaflet/dist/images/marker-icon.png'
 import VueKeyCloak from '@dsb-norge/vue-keycloak-js'
 
 import router from './router'
